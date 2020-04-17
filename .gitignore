@@ -9,7 +9,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-.Python
+.Python.exclude(groups__name=ADMIN_GROUP)
 build/
 develop-eggs/
 dist/
@@ -84,6 +84,9 @@ target/
 # IPython
 profile_default/
 ipython_config.py
+
+.vscode/
+.idea/
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
