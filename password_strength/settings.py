@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        ),
-    }
+    ),
+}
 
 # Application definition
 
@@ -43,18 +43,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework'
-    ]
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    ]
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'password_strength.urls'
 
@@ -82,7 +86,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
-    }
+}
 
 TEMPLATES = [
     {
@@ -95,10 +99,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                ],
-            },
+            ],
         },
-    ]
+    },
+]
 
 WSGI_APPLICATION = 'password_strength.wsgi.application'
 
@@ -109,8 +113,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
     }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -118,29 +122,29 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-        },
+    },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        },
+    },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-        },
+    },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-        },
+    },
     {
         'NAME': 'auth.validators.NumberValidator'
-        },
+    },
     {
         'NAME': 'auth.validators.UppercaseValidator'
-        },
+    },
     {
         'NAME': 'auth.validators.LowercaseValidator'
-        },
+    },
     {
         'NAME': 'auth.validators.SymbolValidator'
-        }
-    ]
+    }
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
